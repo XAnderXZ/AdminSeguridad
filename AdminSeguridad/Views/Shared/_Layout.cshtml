@@ -28,7 +28,7 @@
                         </li>
 
                         <!-- Enlaces visibles solo para usuarios con rol 'Admin' -->
-                        @if (User.IsInRole("Admin"))
+                        @if (User.IsInRole("Administrator"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Index">Usuarios</a>

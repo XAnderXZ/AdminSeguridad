@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using AdminSeguridad.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using AdminSeguridad.Models; // Asegúrate de incluir la referencia a tu contexto de base de datos
+using System.Collections.Generic;
 using System.Linq;
 
 public class AccountController : Controller
@@ -27,8 +29,10 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(string email, string password)
     {
-        // Buscar usuario en la base de datos
-        var user = _context.Usuarios.FirstOrDefault(u => u.Email == email && u.Clave == password);
+        // Buscar usuario en la base de datos e incluir la propiedad de navegación Rol
+        var user = _context.Usuarios
+            .Include(u => u.Rol) // Ensure Rol is loaded
+            .FirstOrDefault(u => u.Email == email && u.Clave == password);
 
         if (user != null)
         {
