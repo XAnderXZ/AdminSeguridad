@@ -62,3 +62,5 @@ namespace AdminSeguridad.Models
         }
     }
 }
+
+//Ejemplo
