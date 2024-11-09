@@ -16,7 +16,7 @@ namespace AdminSeguridad.Controllers
         public IActionResult Index()
         {
             var permisos = _context.Permisos.ToList();
-            return View(permisos);
+            return View(permisos); // This correctly returns the 'Index' view with the list of 'Permisos'
         }
 
         public IActionResult Create()
