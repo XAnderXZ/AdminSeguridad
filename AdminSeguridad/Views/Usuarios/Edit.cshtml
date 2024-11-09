@@ -1,0 +1,50 @@
+﻿@model AdminSeguridad.Models.Usuario
+
+<h2>Editar Usuario</h2>
+
+<form asp-action="Edit">
+    <div>
+        <input type="hidden" asp-for="UsuarioID" />
+    </div>
+    <div>
+        <label>Usuario</label>
+        <input asp-for="usuario" class="form-control" />
+        <span asp-validation-for="usuario" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Primer Apellido</label>
+        <input asp-for="Apellido1" class="form-control" />
+        <span asp-validation-for="Apellido1" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Segundo Apellido</label>
+        <input asp-for="Apellido2" class="form-control" />
+        <span asp-validation-for="Apellido2" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Clave</label>
+        <input asp-for="Clave" type="password" class="form-control" />
+        <span asp-validation-for="Clave" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Rol</label>
+        <select asp-for="RolID" asp-items="@(new SelectList(ViewBag.Roles, "RolID", "NombreRol"))" class="form-control"></select>
+        <span asp-validation-for="RolID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

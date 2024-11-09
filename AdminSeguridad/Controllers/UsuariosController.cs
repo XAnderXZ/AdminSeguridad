@@ -27,18 +27,18 @@ namespace AdminSeguridad.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Usuario usuario)
+        public async Task<IActionResult> Create(Usuario usuarioCreate)
         {
             if (ModelState.IsValid)
             {
-                usuario.FechaCreacion = DateTime.Now;
-                usuario.FechaActualizacion = DateTime.Now;
-                _context.Usuarios.Add(usuario);
+                usuarioCreate.FechaCreacion = DateTime.Now;
+                usuarioCreate.FechaActualizacion = DateTime.Now;
+                _context.Usuarios.Add(usuarioCreate);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Roles = _context.Roles.ToList();
-            return View(usuario);
+            return View(usuarioCreate);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -51,17 +51,17 @@ namespace AdminSeguridad.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Usuario usuario)
+        public async Task<IActionResult> Edit(Usuario usuarioEditar)
         {
             if (ModelState.IsValid)
             {
-                usuario.FechaActualizacion = DateTime.Now;
-                _context.Usuarios.Update(usuario);
+                usuarioEditar.FechaActualizacion = DateTime.Now;
+                _context.Usuarios.Update(usuarioEditar);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Roles = _context.Roles.ToList();
-            return View(usuario);
+            return View(usuarioEditar);
         }
 
         public async Task<IActionResult> Delete(int id)
