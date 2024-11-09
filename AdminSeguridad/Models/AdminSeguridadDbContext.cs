@@ -58,9 +58,11 @@ namespace AdminSeguridad.Models
                 .WithMany(p => p.RolPermisos)
                 .HasForeignKey(rp => rp.PermisoID);
 
+            modelBuilder.Entity<MenuPermiso>()
+                .HasKey(mp => new { mp.MenuID, mp.PermisoID });
+
             base.OnModelCreating(modelBuilder);
         }
     }
 }
 
-//Ejemplo
