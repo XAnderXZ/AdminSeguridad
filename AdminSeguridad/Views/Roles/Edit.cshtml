@@ -4,6 +4,7 @@
 
 <form asp-action="Edit">
     <div class="form-group">
+        <input type="hidden" asp-for="RolID" /> <!-- Agrega este campo oculto -->
         <label asp-for="NombreRol" class="control-label"></label>
         <input asp-for="NombreRol" class="form-control" />
         <span asp-validation-for="NombreRol" class="text-danger"></span>

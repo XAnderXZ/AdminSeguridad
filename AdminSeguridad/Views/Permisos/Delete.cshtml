@@ -1,0 +1,14 @@
+﻿@model AdminSeguridad.Models.Permiso
+
+<h2>Eliminar Permiso</h2>
+<p>¿Está seguro de que desea eliminar este permiso?</p>
+
+<div>
+    <h4>@Model.NombrePermiso</h4>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PermisoID" /> <!-- Campo oculto para el ID -->
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<!-- EditarPermiso.cshtml -->

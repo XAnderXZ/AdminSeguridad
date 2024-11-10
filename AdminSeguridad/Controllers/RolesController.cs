@@ -36,9 +36,9 @@ namespace AdminSeguridad.Controllers
             return View(rol);
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var rol = _context.Roles.Find(id);
+            var rol = await _context.Roles.FindAsync(id);
             if (rol == null)
             {
                 return NotFound();
