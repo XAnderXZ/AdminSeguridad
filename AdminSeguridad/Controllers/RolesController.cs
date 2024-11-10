@@ -120,7 +120,7 @@ namespace AdminSeguridad.Controllers
             _context.RolPermisos.Add(rolPermiso);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", new { id = roleId });
+            return RedirectToAction(nameof(Index));
         }
     }
 }
