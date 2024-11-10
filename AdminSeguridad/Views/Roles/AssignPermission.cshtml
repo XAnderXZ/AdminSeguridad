@@ -1,0 +1,18 @@
+﻿@model AdminSeguridad.Models.Rol
+@{
+    ViewData["Title"] = "Assign Permission";
+}
+
+<h2>Assign Permission to @Model.NombreRol</h2>
+
+<form asp-action="AssignPermission" method="post">
+    <input type="hidden" name="roleId" value="@Model.RolID" />
+    <label for="permisoId">Select Permission:</label>
+    <select name="permisoId" id="permisoId">
+        @foreach (var permiso in ViewBag.Permisos)
+        {
+            <option value="@permiso.PermisoID">@permiso.NombrePermiso</option>
+        }
+    </select>
+    <button type="submit">Assign</button>
+</form>

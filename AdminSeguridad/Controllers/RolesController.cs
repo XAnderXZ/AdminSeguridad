@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AdminSeguridad.Models;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace AdminSeguridad.Controllers
 {
@@ -78,6 +80,47 @@ namespace AdminSeguridad.Controllers
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        // Método para mostrar la vista de asignación de permisos
+        public async Task<IActionResult> AssignPermission(int id)
+        {
+            var role = await _context.Roles
+                .Include(r => r.RolPermisos)
+                .ThenInclude(rp => rp.Permiso)
+                .FirstOrDefaultAsync(r => r.RolID == id);
+
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Permisos = await _context.Permisos.ToListAsync();
+            return View(role);
+        }
+
+        // Método para guardar la asignación de permisos
+        [HttpPost]
+        public async Task<IActionResult> AssignPermission(int roleId, int permisoId)
+        {
+            var role = await _context.Roles.FindAsync(roleId);
+            var permiso = await _context.Permisos.FindAsync(permisoId);
+
+            if (role == null || permiso == null)
+            {
+                return NotFound();
+            }
+
+            var rolPermiso = new RolPermiso
+            {
+                RolID = roleId,
+                PermisoID = permisoId
+            };
+
+            _context.RolPermisos.Add(rolPermiso);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = roleId });
         }
     }
 }
