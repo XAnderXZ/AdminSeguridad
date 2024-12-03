@@ -1,0 +1,40 @@
+﻿@model AdminSeguridad.Models.Permiso
+
+<h2>Editar Permiso</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="PermisoID" /> <!-- Campo oculto para el ID -->
+    <div class="form-group">
+        <label asp-for="NombrePermiso" class="control-label"></label>
+        <input asp-for="NombrePermiso" class="form-control" />
+        <span asp-validation-for="NombrePermiso" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PermisoLectura" class="control-label"></label>
+        <input type="checkbox" asp-for="PermisoLectura" class="form-check-input" />
+        <span asp-validation-for="PermisoLectura" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PermisoEscritura" class="control-label"></label>
+        <input type="checkbox" asp-for="PermisoEscritura" class="form-check-input" />
+        <span asp-validation-for="PermisoEscritura" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PermisoModificacion" class="control-label"></label>
+        <input type="checkbox" asp-for="PermisoModificacion" class="form-check-input" />
+        <span asp-validation-for="PermisoModificacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PermisoEliminacion" class="control-label"></label>
+        <input type="checkbox" asp-for="PermisoEliminacion" class="form-check-input" />
+        <span asp-validation-for="PermisoEliminacion" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

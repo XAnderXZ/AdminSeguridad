@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AdminSeguridad.Models.Permiso>
+
+<h2>Lista de Permisos</h2>
+<a asp-action="Create" class="btn btn-primary">Agregar Nuevo Permiso</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre del Permiso</th>
+            <th>Lectura</th>
+            <th>Escritura</th>
+            <th>Modificación</th>
+            <th>Eliminación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var permiso in Model)
+        {
+            <tr>
+                <td>@permiso.NombrePermiso</td>
+                <td>@(permiso.PermisoLectura ? "Sí" : "No")</td>
+                <td>@(permiso.PermisoEscritura ? "Sí" : "No")</td>
+                <td>@(permiso.PermisoModificacion ? "Sí" : "No")</td>
+                <td>@(permiso.PermisoEliminacion ? "Sí" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@permiso.PermisoID" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@permiso.PermisoID" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

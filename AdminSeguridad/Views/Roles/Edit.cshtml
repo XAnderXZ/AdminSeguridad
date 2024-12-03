@@ -1,0 +1,20 @@
+﻿@model AdminSeguridad.Models.Rol
+
+<h2>Edit Rol</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <input type="hidden" asp-for="RolID" /> 
+        <label asp-for="NombreRol" class="control-label"></label>
+        <input asp-for="NombreRol" class="form-control" />
+        <span asp-validation-for="NombreRol" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

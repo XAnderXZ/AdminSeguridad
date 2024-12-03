@@ -1,0 +1,147 @@
+/* General Reset */
+body, h2, p, a, button, input, select {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    form label {
+        font-weight: bold;
+        color: #495057;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form select {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #495057;
+    }
+
+    form input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    form button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #ffffff;
+}
+
+    table th, table td {
+        border: 1px solid #dee2e6;
+        text-align: left;
+        padding: 8px;
+    }
+
+    table th {
+        background-color: #e9ecef;
+        font-weight: bold;
+        color: #495057;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #f8f9fa;
+    }
+
+.table .btn {
+    margin: 0 5px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    background-color: #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* Header and Footer */
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 20px;
+}
+
+    header a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #343a40;
+    color: #ffffff;
+    margin-top: 20px;
+    font-size: 14px;
+}

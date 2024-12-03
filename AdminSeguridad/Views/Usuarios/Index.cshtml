@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AdminSeguridad.Models.Usuario>
+
+<h2>Usuarios</h2>
+<a asp-action="Create">Agregar Nuevo Usuario</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre Completo</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.usuario</td>
+                <td>@usuario.Nombre @usuario.Apellido1 @usuario.Apellido2</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.Rol.NombreRol</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@usuario.UsuarioID">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@usuario.UsuarioID">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

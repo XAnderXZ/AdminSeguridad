@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AdminSeguridad.Models.Rol>
+
+<h2>Roles</h2>
+<a asp-action="Create">Crear Nuevo Rol</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre del Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rol in Model)
+        {
+            <tr>
+                <td>@rol.NombreRol</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@rol.RolID">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@rol.RolID">Eliminar</a>
+                    <a asp-action="AssignPermission" asp-route-id="@rol.RolID">Asignar Permisos</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- Agrega este campo oculto -->
