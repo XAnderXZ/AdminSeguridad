@@ -2,6 +2,8 @@
 using AdminSeguridad.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AdminSeguridad.Controllers
 {
@@ -27,10 +29,20 @@ namespace AdminSeguridad.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Usuario usuarioCreate)
+        public async Task<IActionResult> Create(Usuario usuarioCreate, IFormFile fotoPerfil)
         {
             if (ModelState.IsValid)
             {
+                if (fotoPerfil != null)
+                {
+                    var filePath = Path.Combine("wwwroot/images", fotoPerfil.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await fotoPerfil.CopyToAsync(stream);
+                    }
+                    usuarioCreate.FotoPerfil = $"/images/{fotoPerfil.FileName}";
+                }
+
                 usuarioCreate.FechaCreacion = DateTime.Now;
                 usuarioCreate.FechaActualizacion = DateTime.Now;
                 _context.Usuarios.Add(usuarioCreate);
@@ -51,10 +63,20 @@ namespace AdminSeguridad.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Usuario usuarioEditar)
+        public async Task<IActionResult> Edit(Usuario usuarioEditar, IFormFile fotoPerfil)
         {
             if (ModelState.IsValid)
             {
+                if (fotoPerfil != null)
+                {
+                    var filePath = Path.Combine("wwwroot/images", fotoPerfil.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await fotoPerfil.CopyToAsync(stream);
+                    }
+                    usuarioEditar.FotoPerfil = $"/images/{fotoPerfil.FileName}";
+                }
+
                 usuarioEditar.FechaActualizacion = DateTime.Now;
                 _context.Usuarios.Update(usuarioEditar);
                 await _context.SaveChangesAsync();

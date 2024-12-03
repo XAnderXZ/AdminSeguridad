@@ -2,7 +2,7 @@
 
 <h2>Editar Usuario</h2>
 
-<form asp-action="Edit">
+<form asp-action="Edit" enctype="multipart/form-data">
     <div>
         <input type="hidden" asp-for="UsuarioID" />
     </div>
@@ -41,10 +41,11 @@
         <select asp-for="RolID" asp-items="@(new SelectList(ViewBag.Roles, "RolID", "NombreRol"))" class="form-control"></select>
         <span asp-validation-for="RolID" class="text-danger"></span>
     </div>
+    <div>
+        <label>Foto de Perfil</label>
+        <input type="file" name="fotoPerfil" class="form-control" />
+        <img src="@Model.FotoPerfil" alt="Foto de Perfil" width="100" />
+    </div>
     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

@@ -13,5 +13,7 @@
         public DateTime FechaActualizacion { get; set; } = DateTime.Now;
         public int RolID { get; set; }
         public Rol Rol { get; set; }
+        public string FotoPerfil { get; set; }
+
     }
 }

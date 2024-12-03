@@ -6,6 +6,7 @@
 <table>
     <thead>
         <tr>
+            <th>Foto</th>
             <th>Usuario</th>
             <th>Nombre Completo</th>
             <th>Email</th>
@@ -17,6 +18,7 @@
         @foreach (var usuario in Model)
         {
             <tr>
+                <td><img src="@usuario.FotoPerfil" alt="Foto de Perfil" width="50" /></td>
                 <td>@usuario.usuario</td>
                 <td>@usuario.Nombre @usuario.Apellido1 @usuario.Apellido2</td>
                 <td>@usuario.Email</td>
